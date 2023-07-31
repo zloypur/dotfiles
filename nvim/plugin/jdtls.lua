@@ -95,12 +95,13 @@ local function get_jdtls_paths()
         --   path = vim.fn.expand('~/.sdkman/candidates/java/18.0.2-amzn'),
         -- },
         {
-            name = "JavaSE-17",
-            path = vim.fn.expand("~/.local/lib/jvm/openjdk/17"),
-        },
-        {
             name = "JavaSE-11",
             path = vim.fn.expand("~/.local/lib/jvm/openjdk/11"),
+        },
+        {
+            name = "JavaSE-17",
+            path = vim.fn.expand("~/.local/lib/jvm/openjdk/17"),
+            default = true,
         },
     }
 
@@ -144,7 +145,22 @@ local function jdtls_on_attach(client, bufnr)
     -- https://github.com/mfussenegger/nvim-jdtls#usage
 
     local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<leader>ci', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
+    if require('mason-registry').has_package('google-java-format') then
+        local formatter_dir = require('mason-registry')
+            .get_package('google-java-format')
+            :get_install_path()
+        local formatter_cmd = formatter_dir .. "/google-java-format --replace"
+        vim.keymap.set('n', '<leader>cf',
+            function()
+                vim.cmd.write()
+                local current_file_path = vim.fn.expand("%")
+                os.execute(formatter_cmd .. ' \"' .. current_file_path .. '"')
+                vim.cmd.edit() -- reload file from disk
+            end,
+            opts)
+    else
+        vim.keymap.set('n', '<leader>ci', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
+    end
     vim.keymap.set('n', '<leader>crv', "<cmd>lua require('jdtls').extract_variable()<cr>", opts)
     vim.keymap.set('x', '<leader>crv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", opts)
     vim.keymap.set('n', '<leader>crc', "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
@@ -183,9 +199,9 @@ local function jdtls_setup(event)
         '-javaagent:' .. path.java_agent,
         '-Xms1g',
         '--add-modules=ALL-SYSTEM',
-        -- Fix google format
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+        -- Fix google format
         '--add-exports', 'jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED',
         '--add-exports', 'jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
         '--add-exports', 'jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED',
@@ -237,8 +253,11 @@ local function jdtls_setup(event)
             -- },
             format = {
                 enabled = true,
+                insertSpaces = true,
+                tabSize = 2,
                 -- settings = {
-                --   profile = 'asdf'
+                --     url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+                --     profile = 'GoogleStyle',
                 -- },
             }
         },
