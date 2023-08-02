@@ -16,23 +16,31 @@ vim.keymap.set("n", "<A-h>", "<C-W>h")
 --vim.keymap.set("n", "l", "<Right>")
 --vim.keymap.set("n", "h", "<Left>")
 
+-- Multiwindows resize
+local horizontal_resize_step = 5
+local vertical_resize_step = 12
+vim.keymap.set("n", "<A-_>", "<Cmd>resize -" .. horizontal_resize_step .. "<CR>")
+vim.keymap.set("n", "<A-+>", "<Cmd>resize +" .. horizontal_resize_step .. "<CR>")
+vim.keymap.set("n", "<A-->", "<Cmd>vertical resize -" .. vertical_resize_step .. "<CR>")
+vim.keymap.set("n", "<A-=>", "<Cmd>vertical resize +" .. vertical_resize_step .. "<CR>")
+
 -- Copy to clipboard
 -- For Mac OS replace 'xsel -b' with 'pbcopy' and 'xsel -o -b' with 'pbpaste'
 -- Alternative clipboard for Linux replace 'xclip -i -sel c' with 'pbcopy' and 'xclip -o -sel -c' with 'pbpaste'
 if vim.fn.has('macunix') then
-    vim.keymap.set("v", "<leader>y", ":w !pbcopy<CR><CR>")
-    vim.keymap.set("v", "<leader>Y", ":%w !pbcopy<CR><CR>")
-    vim.keymap.set("v", "<leader>Y", ":%w !pbcopy<CR><CR>")
-    vim.keymap.set("v", "<leader>p", ":!pbpaste<CR><CR>")
-    vim.keymap.set("n", "<leader>p", ":r!pbpaste<CR><CR>")
+  vim.keymap.set("v", "<leader>y", ":w !pbcopy<CR><CR>")
+  vim.keymap.set("v", "<leader>Y", ":%w !pbcopy<CR><CR>")
+  vim.keymap.set("v", "<leader>Y", ":%w !pbcopy<CR><CR>")
+  vim.keymap.set("v", "<leader>p", ":!pbpaste<CR><CR>")
+  vim.keymap.set("n", "<leader>p", ":r!pbpaste<CR><CR>")
 elseif vim.fn.has('win32') then
-    vim.keymap.set("v", "<leader>y", ":w !clip<CR><CR>")
-    vim.keymap.set("v", "<leader>Y", ":%w !clip<CR><CR>")
-    vim.keymap.set("v", "<leader>Y", ":%w !clip<CR><CR>")
+  vim.keymap.set("v", "<leader>y", ":w !clip<CR><CR>")
+  vim.keymap.set("v", "<leader>Y", ":%w !clip<CR><CR>")
+  vim.keymap.set("v", "<leader>Y", ":%w !clip<CR><CR>")
 elseif vim.fn.has('unix') then
-    vim.keymap.set("v", "<leader>y", ":w !xsel -b<CR><CR>")
-    vim.keymap.set("v", "<leader>Y", ":%w !xsel -b<CR><CR>")
-    vim.keymap.set("v", "<leader>Y", ":%w !xsel -b<CR><CR>")
-    vim.keymap.set("v", "<leader>p", ":!xsel -o -b<CR><CR>")
-    vim.keymap.set("n", "<leader>p", ":r!xsel -o -b<CR><CR>")
+  vim.keymap.set("v", "<leader>y", ":w !xsel -b<CR><CR>")
+  vim.keymap.set("v", "<leader>Y", ":%w !xsel -b<CR><CR>")
+  vim.keymap.set("v", "<leader>Y", ":%w !xsel -b<CR><CR>")
+  vim.keymap.set("v", "<leader>p", ":!xsel -o -b<CR><CR>")
+  vim.keymap.set("n", "<leader>p", ":r!xsel -o -b<CR><CR>")
 end
