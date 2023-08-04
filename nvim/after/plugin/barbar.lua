@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-require 'barbar'.setup {
+require('barbar').setup {
   animation = false,
   auto_hide = true,
 }
