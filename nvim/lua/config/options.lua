@@ -35,6 +35,11 @@ vim.opt.incsearch = true
 vim.opt.ruler = true
 
 -- Clipboard
--- vim.o.clipboard+=unnamedplus
+vim.cmd 'set clipboard+=unnamedplus'
+
+-- Required by nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- Enable local configs
+vim.o.exrc = true
