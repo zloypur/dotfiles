@@ -17,6 +17,14 @@ return require("packer").startup(function(use)
     },
   }
 
+  -- Spectre
+  use {
+    "nvim-pack/nvim-spectre",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+    },
+  }
+
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
