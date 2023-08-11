@@ -128,8 +128,8 @@ local function enable_debugger(bufnr)
     require('jdtls.dap').setup_dap_main_class_configs()
 
     local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<leader>df', "<cmd>lua require('jdtls').test_class()<cr>", opts)
-    vim.keymap.set('n', '<leader>dn', "<cmd>lua require('jdtls').test_nearest_method()<cr>", opts)
+    vim.keymap.set('n', '<leader>dtc', "<cmd>lua require('jdtls').test_class()<cr>", opts)
+    vim.keymap.set('n', '<leader>dtn', "<cmd>lua require('jdtls').test_nearest_method()<cr>", opts)
 end
 
 local function jdtls_on_attach(client, bufnr)
@@ -158,9 +158,8 @@ local function jdtls_on_attach(client, bufnr)
                 vim.cmd.edit() -- reload file from disk
             end,
             opts)
-    else
-        vim.keymap.set('n', '<leader>ci', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
     end
+    vim.keymap.set('n', '<leader>cri', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
     vim.keymap.set('n', '<leader>crv', "<cmd>lua require('jdtls').extract_variable()<cr>", opts)
     vim.keymap.set('x', '<leader>crv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", opts)
     vim.keymap.set('n', '<leader>crc', "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
