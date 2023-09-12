@@ -1,5 +1,25 @@
+require('telescope').setup {
+    defaults = {
+        path_display = {
+            truncate = 2,
+        },
+        layout_strategy = "vertical",
+        layout_config = {
+            vertical = {
+                prompt_position = 'top',
+                height = 0.95,
+                width = 0.95,
+                mirror = true,
+                preview_height = 0.5,
+                preview_cutoff = 0,
+            }
+        }
+    }
+}
+
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
+
 
 telescope.load_extension('undo')
 
