@@ -149,7 +149,7 @@ local function jdtls_on_attach(client, bufnr)
         local formatter_dir = require('mason-registry')
             .get_package('google-java-format')
             :get_install_path()
-        local formatter_cmd = formatter_dir .. "/google-java-format --replace"
+        local formatter_cmd = formatter_dir .. "/google-java-format --replace 2> /dev/null"
         vim.keymap.set('n', '<leader>cf',
             function()
                 vim.cmd.write()
