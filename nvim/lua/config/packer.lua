@@ -85,15 +85,8 @@ return require("packer").startup(function(use)
       { "mfussenegger/nvim-jdtls" },
     }
   }
-  use { "folke/neodev.nvim", config = function()
-    require("trouble").setup {
-      icons = false,
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-  }
+
+  use { "folke/lazydev.nvim" }
 
   -- Debug
   use {

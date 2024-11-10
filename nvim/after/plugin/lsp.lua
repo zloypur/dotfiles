@@ -1,14 +1,14 @@
-require("neodev").setup {
+require("lazydev").setup {
+    ft = "lua",
     library = {
-        plugins = {
-            "nvim-dap-ui",
-            "nvim-treesitter",
-            "plenary.nvim",
-            "telescope.nvim",
-        },
-        types = true,
+        "nvim-dap-ui",
+        "nvim-treesitter",
+        "plenary.nvim",
+        "telescope.nvim",
     },
-
+    enabled = function(root_dir)
+      return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
+    end,
 }
 
 local lsp = require('lsp-zero').preset({})
@@ -30,7 +30,7 @@ lsp.ensure_installed({
     "pyright",
 
     -- JS/TS
-    "tsserver",
+    "ts_ls",
     "eslint",
 
     -- Lua
