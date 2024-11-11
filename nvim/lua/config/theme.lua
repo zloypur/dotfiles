@@ -1,2 +1,2 @@
-vim.o.background = "light"
-vim.cmd.colorscheme("lunaperche")
+vim.opt.background = "light"
+vim.cmd.colorscheme "gruvbox"
