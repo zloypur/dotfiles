@@ -60,23 +60,20 @@ local function configure_bundles()
         return vars_cache.bundles
     end
 
-    local function get_mason_jar(package_name, jar_pattern)
-        if not mason.has_package(package_name) then
-            return nil
-        end
+    local bundles = {}
 
-        local install_path = mason.get_package(package_name):get_install_path()
-        local jars = vim.split(install_path .. jar_pattern, '\n')
-        if jars[1] ~= nil and jars[1] ~= '' then
-            return jars[1]
-        end
+    if mason.has_package('java-debug-adapter') then
+        local install_path = mason.get_package('java-debug-adapter'):get_install_path()
+        local jar_path = vim.fn.glob(install_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar', true)
+        table.insert(bundles, jar_path)
 
-        return nil
     end
 
-    local bundles = {}
-    table.insert(bundles, get_mason_jar('java-test', '/extension/server/*.jar'))
-    table.insert(bundles, get_mason_jar('java-debug-adapter', '/extension/server/com.microsoft.java.debug.plugin-*.jar'))
+    if mason.has_package('java-test') then
+        local install_path = mason.get_package('java-test'):get_install_path()
+        local jar_paths = vim.split(vim.fn.glob(install_path .. '/extension/server/*.jar', true), '\n')
+        vim.list_extend(bundles, jar_paths)
+    end
 
     vars_cache.bundles = bundles
 
@@ -259,13 +256,13 @@ local function setup_jdtls()
     -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     local lsp_settings = {
         java = {
-            -- jdt = {
-            --   ls = {
-            --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
-            --   }
-            -- },
+            jdt = {
+              ls = {
+                vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms100m -Xlog:disable"
+              }
+            },
             server = {
-                launchMode = 'Standard',
+                launchMode = 'Hybrid',
             },
             eclipse = {
                 downloadSources = true,
@@ -291,7 +288,7 @@ local function setup_jdtls()
             format = {
                 enabled = true,
                 insertSpaces = true,
-                tabSize = 2,
+                tabSize = 4,
                 -- settings = {
                 --     url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
                 --     profile = 'GoogleStyle',
@@ -343,7 +340,7 @@ local function setup_jdtls()
         capabilities = language_server_capabilities,
         root_dir = project_root,
         flags = {
-            allow_incremental_sync = true,
+            allow_incremental_sync = false,
         },
         init_options = {
             bundles = bundles,
