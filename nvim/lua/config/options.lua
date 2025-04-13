@@ -1,14 +1,14 @@
 -- leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- navigation
-vim.opt.mouse         = "a"
-vim.opt.backspace     = "indent,eol,start" -- allow backspacing over everything in insert mode
+vim.opt.mouse = "a"
+vim.opt.backspace = "indent,eol,start" -- allow backspacing over everything in insert mode
 
 -- terminal setup
 vim.g.have_nerd_font = false
-vim.opt.errorbells    = false
+vim.opt.errorbells = false
 vim.opt.termguicolors = true
 
 -- timings
@@ -19,11 +19,11 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- signs column
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = "number"
 
 -- ruler
 vim.opt.ruler = true
-vim.opt.colorcolumn = '90'
+vim.opt.colorcolumn = "90"
 vim.opt.cursorline = true
 
 -- tabs
@@ -42,11 +42,11 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.inccommand = 'split' -- enables live substitutions
+vim.opt.inccommand = "split" -- enables live substitutions
 
 -- show spaces
 vim.opt.list = false -- should be turn on on demand
-vim.opt.listchars = { tab = '> ', space = '·', nbsp = '+' }
+vim.opt.listchars = { tab = "> ", space = "·", nbsp = "+" }
 
 -- undo
 vim.opt.swapfile = false
@@ -55,8 +55,7 @@ vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 -- clipboard
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- enable local configs
 vim.o.exrc = true
-

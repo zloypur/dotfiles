@@ -13,10 +13,10 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
-                -- LS
+				-- LS
 				"lua_ls",
 
-                -- tools
+				-- tools
 				"stylua",
 			},
 		},
