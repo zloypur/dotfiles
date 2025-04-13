@@ -1,4 +1,3 @@
 require("config.options")
-require("config.remap")
-require("config.packer")
-require("config.theme")
+require("config.mappings")
+require("config.lazy")
