@@ -17,11 +17,6 @@ return {
 
 			-- autoinstall of LSPs via mason-lspconfig is disabled in favor of installation
 			-- via mason-tool-installer
-			local mason_lspconfig = require("mason-lspconfig")
-			mason_lspconfig.setup({
-				ensure_installed = {}, -- explicitly set to an empty table
-				automatic_installation = false,
-			})
 
 			for server, serverOpts in pairs(opts.servers) do
 				serverOpts.capabilities = capabilities

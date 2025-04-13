@@ -14,6 +14,7 @@ return {
 			require("lazy.core.loader").add_to_rtp(plugin)
 			require("nvim-treesitter.query_predicates")
 		end,
+		opts_extend = { "ensure_installed" },
 		opts = {
 			prefer_git = true,
 			auto_install = true,
