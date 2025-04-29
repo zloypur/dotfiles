@@ -23,16 +23,16 @@ return {
 		{
 			"<leader>e",
 			function()
-				require("neo-tree.command").execute({ position = "float", toggle = true })
+				require("neo-tree.command").execute({ position = "float", reveal = true, toggle = true })
 			end,
 			desc = "Toggle NeoTree",
 		},
 		{
-			"<leader>nc",
+			"<leader>n",
 			function()
-				require("neo-tree.command").execute({ position = "float", reveal = true, toggle = true })
+				require("neo-tree.command").execute({ position = "left", toggle = true })
 			end,
-			desc = "Git Explorer",
+			desc = "Toggle NeoTree",
 		},
 		{
 			"<leader>ng",
