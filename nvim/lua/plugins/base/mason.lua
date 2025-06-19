@@ -1,10 +1,10 @@
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		opts = {},
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {},
