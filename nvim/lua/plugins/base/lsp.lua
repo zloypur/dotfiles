@@ -2,8 +2,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "mason-org/mason.nvim", opts = {}, version = '^1.0.0' },
-            { "mason-org/mason-lspconfig.nvim", version = '^1.0.0' },
+			{ "mason-org/mason.nvim", opts = {}, version = "^1.0.0" },
+			{ "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			"saghen/blink.cmp",
@@ -71,7 +71,7 @@ return {
 			{
 				"<leader>cr",
 				function()
-					return ":IncRename " .. vim.fn.expand("<cword>")
+					return ":IncRename "
 				end,
 				expr = true,
 			},

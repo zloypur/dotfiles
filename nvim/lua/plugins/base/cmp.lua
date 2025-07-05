@@ -48,6 +48,13 @@ return {
 			-- adding any nvim-cmp sources here will enable them
 			-- with blink.compat
 			default = { "lsp", "path", "snippets", "buffer" },
+			providers = {
+				snippets = {
+					should_show_items = function(ctx) -- do not show snippets on methods call or field access
+						return ctx.trigger.initial_kind ~= "trigger_character"
+					end,
+				},
+			},
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
