@@ -7,6 +7,8 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			"saghen/blink.cmp",
+
+			"mfussenegger/nvim-dap",
 		},
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")

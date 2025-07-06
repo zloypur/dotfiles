@@ -20,6 +20,9 @@ return {
 				-- tools
 				"goimports",
 				"gofumpt",
+
+				-- debugger
+				"delve",
 			},
 		},
 	},
@@ -70,6 +73,24 @@ return {
 						},
 					},
 				},
+			},
+		},
+	},
+	{
+		"leoluz/nvim-dap-go",
+		opts = {
+			tests = {
+				-- enables verbosity when running the test.
+				verbose = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>dt",
+				function()
+					require("dap-go").debug_test()
+				end,
+				desc = "Debug current test",
 			},
 		},
 	},
