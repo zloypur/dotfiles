@@ -23,7 +23,7 @@ vim.opt.signcolumn = "number"
 
 -- ruler
 vim.opt.ruler = true
-vim.opt.colorcolumn = "90"
+vim.opt.colorcolumn = "90,120"
 vim.opt.cursorline = true
 
 -- tabs

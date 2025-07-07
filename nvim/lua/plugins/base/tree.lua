@@ -6,6 +6,11 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	opts = {
+		-- popup_border_style is for input and confirmation dialogs.
+		-- Configurtaion of floating window is done in the individual source sections.
+		-- "NC" is a special style that works well with NormalNC set
+		-- For popup configuration see https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup
+		popup_border_style = "double", -- "double", "none", "rounded", "shadow", "single" or "solid"
 		filesystem = {
 			bind_to_cwd = false,
 			follow_current_file = { enabled = true },
@@ -42,7 +47,7 @@ return {
 			desc = "Git Explorer",
 		},
 		{
-			"<leader>nb",
+			"<leader>b",
 			function()
 				require("neo-tree.command").execute({ source = "buffers", position = "float", toggle = true })
 			end,
