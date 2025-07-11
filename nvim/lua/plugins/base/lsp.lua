@@ -20,7 +20,36 @@ return {
 			-- autoinstall of LSPs via mason-lspconfig is disabled in favor of installation
 			-- via mason-tool-installer
 
+			local on_attach = function(client, bufrn)
+				local o = { noremap = true, silent = true }
+				if client.supports_method("textDocument/codeAction") then
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, o)
+				end
+				if client.supports_method("textDocument/signatureHelp") then
+					vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, o)
+				end
+
+				if client.supports_method("textDocument/typeDefinition") then
+					vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, o)
+				end
+				if client.supports_method("typeHierarchy/subtypes") then
+					vim.keymap.set("n", "gs", function(_)
+						vim.lsp.buf.typehierarchy("subtypes")
+					end, o)
+				end
+				if client.supports_method("typeHierarchy/supertypes") then
+					vim.keymap.set("n", "gS", function(_)
+						vim.lsp.buf.typehierarchy("supertypes")
+					end, o)
+				end
+				-- following methods are managed via fzf-lua
+				-- "textDocument/definition"
+				-- "textDocument/references"
+				-- "textDocument/implementation"
+			end
+
 			for server, serverOpts in pairs(opts.servers) do
+				serverOpts.on_attach = on_attach
 				serverOpts.capabilities = capabilities
 				lspconfig[server].setup(serverOpts)
 			end
@@ -74,6 +103,13 @@ return {
 				"<leader>cr",
 				function()
 					return ":IncRename "
+				end,
+				expr = true,
+			},
+			{
+				"<leader>cn",
+				function()
+					return ":IncRename " .. vim.fn.expand("<cword>")
 				end,
 				expr = true,
 			},

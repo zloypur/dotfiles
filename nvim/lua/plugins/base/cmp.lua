@@ -42,7 +42,12 @@ return {
 		},
 
 		-- experimental signature help support
-		-- signature = { enabled = true },
+		signature = {
+			enabled = false, -- explicit call via hotkey is preferred
+			window = {
+				show_documentation = false,
+			},
+		},
 
 		sources = {
 			-- adding any nvim-cmp sources here will enable them

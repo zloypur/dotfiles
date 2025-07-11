@@ -32,26 +32,5 @@ return {
 			end,
 			desc = "Toggle NeoTree",
 		},
-		{
-			"<leader>n",
-			function()
-				require("neo-tree.command").execute({ position = "left", toggle = true })
-			end,
-			desc = "Toggle NeoTree",
-		},
-		{
-			"<leader>ng",
-			function()
-				require("neo-tree.command").execute({ source = "git_status", position = "float", toggle = true })
-			end,
-			desc = "Git Explorer",
-		},
-		{
-			"<leader>b",
-			function()
-				require("neo-tree.command").execute({ source = "buffers", position = "float", toggle = true })
-			end,
-			desc = "Buffer Explorer",
-		},
 	},
 }

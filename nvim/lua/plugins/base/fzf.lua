@@ -23,7 +23,7 @@ return {
 				end,
 			},
 			{
-				"<leader>fb",
+				"<leader>b",
 				function()
 					require("fzf-lua").buffers()
 				end,
@@ -38,7 +38,7 @@ return {
 			{
 				"gr",
 				function()
-					require("fzf-lua").lsp_references()
+					require("fzf-lua").lsp_references({ jump1 = true })
 				end,
 			},
 			{
@@ -56,7 +56,7 @@ return {
 			{
 				"gi",
 				function()
-					require("fzf-lua").lsp_implementations()
+					require("fzf-lua").lsp_implementations({ jump1 = true })
 				end,
 			},
 		},
