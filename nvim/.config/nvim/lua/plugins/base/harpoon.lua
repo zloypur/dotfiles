@@ -1,3 +1,9 @@
+local function get_harpoon_selector(index)
+	return function()
+		require("harpoon"):list():select(index)
+	end
+end
+
 return {
 	{
 		"ThePrimeagen/harpoon",
@@ -11,23 +17,21 @@ return {
 		},
 		keys = {
 			{
-				"<leader>ha",
+				"<leader>a",
 				function()
-					local harpoon = require("harpoon")
-					harpoon:list():add()
+					require("harpoon"):list():add()
 				end,
 				mode = "n",
 			},
 			{
-				"<leader>hd",
+				"<leader>d",
 				function()
-					local harpoon = require("harpoon")
-					harpoon:list():remove()
+					require("harpoon"):list():remove()
 				end,
 				mode = "n",
 			},
 			{
-				"<leader>hs",
+				"<leader>h",
 				function()
 					local harpoon = require("harpoon")
 					harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -35,19 +39,28 @@ return {
 				mode = "n",
 			},
 			{
-				"<C-S-P>",
-				function()
-					local harpoon = require("harpoon")
-					harpoon:list():prev()
-				end,
+				"<leader>1",
+				get_harpoon_selector(1),
 				mode = "n",
 			},
 			{
-				"<C-S-N>",
-				function()
-					local harpoon = require("harpoon")
-					harpoon:list():next()
-				end,
+				"<leader>2",
+				get_harpoon_selector(2),
+				mode = "n",
+			},
+			{
+				"<leader>3",
+				get_harpoon_selector(3),
+				mode = "n",
+			},
+			{
+				"<leader>4",
+				get_harpoon_selector(4),
+				mode = "n",
+			},
+			{
+				"<leader>5",
+				get_harpoon_selector(5),
 				mode = "n",
 			},
 		},

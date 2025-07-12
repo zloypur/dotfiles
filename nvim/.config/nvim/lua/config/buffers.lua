@@ -1,6 +1,4 @@
-vim.keymap.set("n", "<C-c>", ":bd<CR>")
-vim.keymap.set("n", "<C-d>", function()
-	-- close all buffers
+local function close_unused_bufs()
 	local cur_buf = vim.api.nvim_get_current_buf()
 	local bufs = vim.api.nvim_list_bufs()
 	local closed_bufs = {}
@@ -17,4 +15,9 @@ vim.keymap.set("n", "<C-d>", function()
 		end
 	end
 	print("closed " .. #closed_bufs .. " buffers: " .. table.concat(closed_bufs, ", "))
-end)
+end
+
+vim.keymap.set("n", "<C-c>", ":bd<CR>")
+vim.keymap.set("n", "<leader>u", close_unused_bufs)
+vim.keymap.set("n", "<leader>n", ":bnext<CR>")
+vim.keymap.set("n", "<leader>p", ":bprev<CR>")
