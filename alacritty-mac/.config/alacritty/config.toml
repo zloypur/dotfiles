@@ -1,0 +1,12 @@
+[window]
+option_as_alt = "Both"
+
+[font]
+normal = { family = "UbuntuMono Nerd Font Mono", style = "Regular" }
+size = 18
+
+[keyboard]
+bindings = [
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+]
