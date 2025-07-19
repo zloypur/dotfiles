@@ -102,14 +102,14 @@ return {
 		opts = {},
 		keys = {
 			{
-				"<leader>cr",
+				"<leader>crr",
 				function()
 					return ":IncRename "
 				end,
 				expr = true,
 			},
 			{
-				"<leader>cn",
+				"<leader>cra",
 				function()
 					return ":IncRename " .. vim.fn.expand("<cword>")
 				end,

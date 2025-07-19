@@ -65,14 +65,23 @@ return {
 					},
 					root_dir = project_dir,
 					on_attach = function(client, bufrn)
-						--
 						-- Setup DAP
 						jdtls.setup_dap({ hotcodereplace = "auto" })
 						dap.setup_dap_main_class_configs()
 
-						local opts = { buffer = bufnr }
-						-- vim.keymap.set("n", "<leader>dt", "<cmd>lua require('jdtls').test_class()<cr>", opts)
-						vim.keymap.set("n", "<leader>dt", jdtls.test_nearest_method, opts)
+						-- Keymaps
+						local opts = { buffer = bufrn }
+
+						-- stylua: ignore start
+						vim.keymap.set("n", "<leader>cri", "<CMD>lua require('jdtls').organize_imports()<CR>", opts)
+						vim.keymap.set("n", "<leader>crv", "<CMD>lua require('jdtls').extract_variable()<CR>", opts)
+						vim.keymap.set("x", "<leader>crv", "<ESC><CMD>lua require('jdtls').extract_variable(true)<CR>", opts)
+						vim.keymap.set("n", "<leader>crc", "<CMD>lua require('jdtls').extract_constant<CR>", opts)
+						vim.keymap.set("x", "<leader>crc", "<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>", opts)
+						vim.keymap.set("x", "<leader>crm", "<ESC><CMD>lua require('jdtls').extract_method(true)<CR>", opts)
+						vim.keymap.set("n", "<leader>df",  "<CMD>lua require('jdtls').test_class()<CR>", opts)
+						vim.keymap.set("n", "<leader>dt",  "<CMD>lua require('jdtls').test_nearest_method()<CR>", opts)
+						-- stylua: ignore end
 					end,
 				}
 
