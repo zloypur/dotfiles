@@ -11,6 +11,9 @@ return {
 			"mfussenegger/nvim-dap",
 		},
 		config = function(_, opts)
+			local disables_lsps = { "jdtls" } -- LSPs that are not managed by lspconfig
+			vim.lsp.enable(disables_lsps, false)
+
 			local lspconfig = require("lspconfig")
 			local clientCapabilities = vim.lsp.protocol.make_client_capabilities()
 
