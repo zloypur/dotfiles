@@ -47,6 +47,16 @@ return {
 				local cache_dir = vim.fn.stdpath("cache") .. "/nvim/jdtls"
 				local project_data_dir = cache_dir .. "/" .. vim.fn.fnamemodify(project_dir, ":p:h:t")
 
+				local bundles = {}
+				local test_bundle = get_package_files("java-test", "extension/server/*.jar")
+				for _, v in ipairs(test_bundle) do
+					table.insert(bundles, v)
+				end
+				local debug_bundle = get_package_files("java-debug-adapter", "extension/server/*.jar")
+				for _, v in ipairs(debug_bundle) do
+					table.insert(bundles, v)
+				end
+
 				local config = {
 					cmd = {
 						"jdtls",
@@ -58,10 +68,7 @@ return {
 						extendedClientCapabilities = jdtls.extendedClientCapabilities,
 					},
 					init_options = {
-						bundles = {
-							table.unpack(get_package_files("java-test", "extension/server/*.jar")),
-							table.unpack(get_package_files("java-debug-adapter", "extension/server/*.jar")),
-						},
+						bundles = bundles,
 					},
 					root_dir = project_dir,
 					on_attach = function(client, bufrn)
