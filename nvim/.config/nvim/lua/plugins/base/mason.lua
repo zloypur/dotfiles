@@ -9,6 +9,7 @@ return {
 		version = "v2.0.0",
 		opts_extend = { "ensure_installed" },
 		opts = {
+			automatic_enable = false,
 			ensure_installed = {},
 		},
 	},
