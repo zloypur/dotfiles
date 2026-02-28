@@ -81,7 +81,7 @@ return {
 		opts = {
 			tests = {
 				-- enables verbosity when running the test.
-				verbose = false,
+				verbose = true,
 			},
 		},
 		keys = {
