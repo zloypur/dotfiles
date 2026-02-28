@@ -14,7 +14,6 @@ return {
 			local disables_lsps = { "jdtls" } -- LSPs that are not managed by lspconfig
 			vim.lsp.enable(disables_lsps, false)
 
-			local lspconfig = require("lspconfig")
 			local clientCapabilities = vim.lsp.protocol.make_client_capabilities()
 
 			local blink = require("blink.cmp")
@@ -54,7 +53,8 @@ return {
 			for server, serverOpts in pairs(opts.servers) do
 				serverOpts.on_attach = on_attach
 				serverOpts.capabilities = capabilities
-				lspconfig[server].setup(serverOpts)
+				vim.lsp.config(server, serverOpts)
+				vim.lsp.enable(server)
 			end
 		end,
 	},
