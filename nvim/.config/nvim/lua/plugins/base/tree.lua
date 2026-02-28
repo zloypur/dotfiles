@@ -14,6 +14,8 @@ return {
 		filesystem = {
 			bind_to_cwd = false,
 			follow_current_file = { enabled = true },
+			group_empty_dirs = true, -- when true, empty folders will be grouped together
+			scan_mode = "deep", -- "deep", "shallow": Do or don't scan into directories to detect possible empty directory a priori
 			filtered_items = {
 				hide_dotfiles = false,
 			},
