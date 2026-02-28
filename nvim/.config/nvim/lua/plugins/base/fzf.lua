@@ -4,8 +4,15 @@ return {
 		-- optional for icon support
 		dependencies = { "echasnovski/mini.icons" },
 		config = function(opts)
-			-- calling `setup` is optional for customization
-			require("fzf-lua").setup({ "telescope" })
+			-- patterns must be lua compatible regex separated by :
+			local file_ignore_patterns = vim.split(os.getenv("FZF_FILE_IGNORE_PATTERNS") or "", ":")
+
+			require("fzf-lua").setup({
+				"telescope",
+				files = {
+					file_ignore_patterns = file_ignore_patterns,
+				},
+			})
 		end,
 
 		keys = {
