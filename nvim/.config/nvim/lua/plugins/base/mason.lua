@@ -18,6 +18,11 @@ return {
 		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {},
+			integrations = {
+				["mason-lspconfig"] = false,
+				["mason-null-ls"] = false,
+				["mason-nvim-dap"] = false,
+			},
 		},
 	},
 }

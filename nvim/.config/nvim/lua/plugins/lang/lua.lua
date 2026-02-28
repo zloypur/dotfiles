@@ -14,7 +14,7 @@ return {
 		opts = {
 			ensure_installed = {
 				-- LS
-				"lua_ls",
+				"lua-language-server",
 
 				-- tools
 				"stylua",
