@@ -9,21 +9,6 @@ return {
 		},
 	},
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		opts = {
-			ensure_installed = {
-				-- ls
-				"clangd",
-
-				-- tools
-				"clang-format",
-
-				-- debugger
-				"codelldb",
-			},
-		},
-	},
-	{
 		"p00f/clangd_extensions.nvim",
 		dependencies = { "mfussenegger/nvim-dap" },
 		lazy = true,

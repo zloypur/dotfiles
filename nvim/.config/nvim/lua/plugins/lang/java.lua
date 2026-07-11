@@ -8,28 +8,11 @@ return {
 		},
 	},
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		opts = {
-			ensure_installed = {
-				-- ls
-				"jdtls",
-
-				-- tools
-				"java-test",
-
-				-- debugger
-				"java-debug-adapter",
-			},
-		},
-	},
-	{
 		"mfussenegger/nvim-jdtls",
 		dependencies = { "mfussenegger/nvim-dap", "neovim/nvim-lspconfig" },
 		config = function()
 			local function get_package_files(package, pattern)
-				local mason_root = require("mason.settings").current.install_root_dir
-
-				local package_path = mason_root .. "/packages/" .. package .. "/" .. pattern
+				local package_path = vim.fn.stdpath("data") .. "/packages/" .. package .. "/" .. pattern
 				local files = vim.split(vim.fn.glob(package_path), "\n")
 				if files[1] ~= "" then
 					return files
@@ -48,13 +31,28 @@ return {
 				local project_data_dir = cache_dir .. "/" .. vim.fn.fnamemodify(project_dir, ":p:h:t")
 
 				local bundles = {}
-				local test_bundle = get_package_files("java-test", "extension/server/*.jar")
-				for _, v in ipairs(test_bundle) do
-					table.insert(bundles, v)
-				end
-				local debug_bundle = get_package_files("java-debug-adapter", "extension/server/*.jar")
+
+				local debug_bundle =
+					get_package_files("vscode-java-debug", "extension/server/com.microsoft.java.debug.plugin-*.jar")
 				for _, v in ipairs(debug_bundle) do
 					table.insert(bundles, v)
+				end
+
+				local test_bundle = get_package_files("vscode-java-test", "extension/server/*.jar")
+				local excluded_bundles = {
+					"com.microsoft.java.test.runner-jar-with-dependencies.jar",
+					"jacocoagent.jar",
+				}
+				for _, v in ipairs(test_bundle) do
+					if not vim.tbl_contains(excluded_bundles, v) then
+						table.insert(bundles, v)
+					end
+				end
+
+				local lombok_javaagent = ""
+				local lombok = get_package_files("lombok", "lombok.jar")
+				if #lombok > 0 then
+					lombok_javaagent = "--jvm-arg=-javaagent:" .. lombok[1]
 				end
 
 				local config = {
@@ -63,6 +61,8 @@ return {
 
 						"-data",
 						project_data_dir,
+
+						lombok_javaagent,
 					},
 					settings = {
 						extendedClientCapabilities = jdtls.extendedClientCapabilities,

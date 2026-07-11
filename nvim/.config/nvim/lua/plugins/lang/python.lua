@@ -8,19 +8,6 @@ return {
 		},
 	},
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		opts = {
-			ensure_installed = {
-				-- ls
-				"pyright",
-
-				-- tools
-				"black",
-				"isort",
-			},
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {

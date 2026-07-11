@@ -10,18 +10,6 @@ return {
 		},
 	},
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		opts = {
-			ensure_installed = {
-				-- LS
-				"lua-language-server",
-
-				-- tools
-				"stylua",
-			},
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {

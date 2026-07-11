@@ -8,15 +8,6 @@ return {
 		},
 	},
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		opts = {
-			ensure_installed = {
-				-- formatter
-				"jq",
-			},
-		},
-	},
-	{
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {

@@ -11,22 +11,6 @@ return {
 		},
 	},
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		opts = {
-			ensure_installed = {
-				-- ls
-				"gopls",
-
-				-- tools
-				"goimports",
-				"gofumpt",
-
-				-- debugger
-				"delve",
-			},
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {

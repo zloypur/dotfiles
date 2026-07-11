@@ -2,10 +2,6 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
-			{ "mason-org/mason-lspconfig.nvim" },
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-
 			"saghen/blink.cmp",
 
 			"mfussenegger/nvim-dap",
@@ -19,8 +15,7 @@ return {
 			local blink = require("blink.cmp")
 			local capabilities = blink.get_lsp_capabilities(clientCapabilities)
 
-			-- autoinstall of LSPs via mason-lspconfig is disabled in favor of installation
-			-- via mason-tool-installer
+			-- autoinstall of LSPs via mason-lspconfig is disabled in favor manual installation
 
 			local on_attach = function(client, bufrn)
 				local o = { noremap = true, silent = true }
