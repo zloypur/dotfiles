@@ -9,6 +9,9 @@ return {
 
 			require("fzf-lua").setup({
 				"telescope",
+				winopts = {
+					border = "single",
+				},
 				files = {
 					file_ignore_patterns = file_ignore_patterns,
 				},
