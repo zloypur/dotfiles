@@ -48,6 +48,9 @@ vim.opt.inccommand = "split" -- enables live substitutions
 vim.opt.list = false -- should be turn on on demand
 vim.opt.listchars = { tab = "> ", space = "·", nbsp = "+" }
 
+-- window borders
+vim.o.winborder = "single"
+
 -- undo
 vim.opt.swapfile = false
 vim.opt.backup = false
