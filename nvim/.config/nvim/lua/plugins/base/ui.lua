@@ -5,7 +5,10 @@ return {
 		priority = 95, -- Ensure it loads first
 		config = function()
 			vim.opt.background = "light" -- light, dark
-			vim.cmd.colorscheme("xcodehc")
+			vim.g.xcodelighthc_green_comments = 0
+			vim.g.xcodelighthc_dim_punctuation = 0
+			vim.g.xcodelighthc_match_paren_style = 1
+			vim.cmd.colorscheme("xcodelighthc")
 		end,
 	},
 	{

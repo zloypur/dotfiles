@@ -41,6 +41,12 @@ return {
 					require("fzf-lua").quickfix()
 				end,
 			},
+			{
+				"<leader>fr",
+				function()
+					require("fzf-lua").resume()
+				end,
+			},
 			-- LSP
 			{
 				"gr",
@@ -49,7 +55,7 @@ return {
 				end,
 			},
 			{
-				"<leader>ss",
+				"<leader>fl",
 				function()
 					require("fzf-lua").lsp_live_workspace_symbols()
 				end,
