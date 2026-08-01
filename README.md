@@ -1,5 +1,48 @@
 # Dotfiles
 
+## Zsh
+
+### Required plugins
+
+**zsh-autosuggestions**
+
+[sources](https://github.com/zsh-users/zsh-autosuggestions)
+
+Install :
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.local/share/zsh/plugins/zsh-autosuggestions
+```
+
+**zsh-syntax-highlighting**
+
+[sources](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+Install :
+
+```sh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.local/share/zsh/plugins/zsh-syntax-highlighting
+```
+
+### Required binaries
+
+**direnv**
+
+[sources](https://github.com/direnv)
+
+Install on MacOS:
+
+```sh
+$ brew install direnv
+```
+
+Install on Fedora:
+
+```sh
+$ sudo dnf install direnv
+```
+
+
 ## Nvim
 
 ### Required binaries
