@@ -4,7 +4,7 @@
 
 # Setup prompt
 
-PROMPT='%F{green}%~%f at %* %(?..%F{red}!%f)'$'\n''%(!.#.$) '
+PROMPT='%F{green}%~%f at %F{#A9A9A9}%*%f %(?..%B%F{red}!%f%b)'$'\n''%(!.#.$) '
 
 # Keybindings
 
