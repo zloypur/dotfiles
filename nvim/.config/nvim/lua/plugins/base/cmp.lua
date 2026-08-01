@@ -10,7 +10,11 @@ return {
 	},
 	version = "1.1.1",
 	opts = {
-		keymap = { preset = "enter" },
+		keymap = {
+			preset = "default",
+
+			["<CR>"] = { "accept", "fallback" },
+		},
 		appearance = {
 			-- sets the fallback highlight groups to nvim-cmp's highlight groups
 			-- useful for when your theme doesn't support blink.cmp

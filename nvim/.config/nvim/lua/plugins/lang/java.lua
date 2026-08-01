@@ -66,6 +66,11 @@ return {
 					},
 					settings = {
 						extendedClientCapabilities = jdtls.extendedClientCapabilities,
+						java = {
+							autobuild = {
+								enabled = false,
+							},
+						},
 					},
 					init_options = {
 						bundles = bundles,
