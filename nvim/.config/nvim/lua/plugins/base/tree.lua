@@ -18,6 +18,7 @@ return {
 			scan_mode = "deep", -- "deep", "shallow": Do or don't scan into directories to detect possible empty directory a priori
 			filtered_items = {
 				hide_dotfiles = false,
+				hide_gitignored = false,
 			},
 		},
 		window = {

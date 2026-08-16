@@ -13,7 +13,15 @@ return {
 					border = "single",
 				},
 				files = {
+					hidden = true,
+					follow = true,
+					no_ignore = true,
 					file_ignore_patterns = file_ignore_patterns,
+				},
+				grep = {
+					hidden = true,
+					follow = true,
+					no_ignore = true,
 				},
 			})
 		end,

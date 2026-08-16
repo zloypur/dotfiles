@@ -51,11 +51,14 @@ vim.opt.listchars = { tab = "> ", space = "·", nbsp = "+" }
 -- window borders
 vim.o.winborder = "single"
 
+-- netrw
+vim.g.netrw_liststyle = 3
+
 -- undo
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = vim.fn.stdpath("state") .. "undodir"
 
 -- clipboard
 vim.opt.clipboard = "unnamedplus"
