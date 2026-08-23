@@ -30,7 +30,10 @@ for d in $ZSH_DIRS; do
 done
 
 # Setup history
-HISTFILE=$ZSH_STATE/history
+HISTFILE="$ZSH_STATE/history"
+HISTSIZE=10000
+SAVEHIST=1000
+setopt inc_append_history
 
 # Setup completions cache
 zstyle ':completion:*' cache-path "$ZSH_CACHE"/zcompcache
