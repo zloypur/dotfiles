@@ -1,0 +1,8 @@
+macos-option-as-alt = true
+
+font-family = UbuntuMono Nerd Font Mono
+font-style = Regular
+font-size = 18
+
+keybind = alt+right=esc:F
+keybind = alt+left=esc:B

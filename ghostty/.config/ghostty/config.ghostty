@@ -1,0 +1,10 @@
+# Keep Ghostty's native TERM default (xterm-ghostty).
+
+# Open URLs with Cmd+click on macOS or Ctrl+click on Linux.
+link-url = true
+link-previews = false
+
+config-file = theme.ghostty
+
+# OS-specific settings, supplied by ghostty-mac or ghostty-linux.
+config-file = platform.ghostty

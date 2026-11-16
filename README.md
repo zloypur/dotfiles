@@ -1,5 +1,20 @@
 # Dotfiles
 
+## Ghostty
+
+Requires Ghostty and **UbuntuMono Nerd Font Mono**. 
+
+Install the shared package and exactly one OS-specific package with GNU Stow,
+running from this repository:
+
+```sh
+# macOS
+stow -S ghostty ghostty-mac
+
+# Linux
+stow -S ghostty ghostty-linux
+```
+
 ## Zsh
 
 ### Required plugins
