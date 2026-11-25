@@ -3,6 +3,8 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		branch = "main",
+		lazy = false,
+		build = ":TSUpdate",
 		opts_extend = { "ensure_installed" },
 		opts = {
 			prefer_git = true,
