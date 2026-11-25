@@ -6,3 +6,6 @@ font-size = 18
 
 keybind = alt+right=esc:F
 keybind = alt+left=esc:B
+
+# Forward Cmd+Enter as Ctrl+Enter through tmux.
+keybind = super+enter=csi:13;5u
